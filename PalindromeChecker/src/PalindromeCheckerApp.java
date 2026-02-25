@@ -1,8 +1,6 @@
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-
-        // Hardcoded string
         String original = "level";
 
         // Variable to store reversed string
