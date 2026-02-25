@@ -2,9 +2,10 @@ import java.util.Stack;
 
 public class UseCase5PalindromeCheckerApp {
 
-    public static void main(String[] args) {
 
-        // Original string
+        // Origin    public static void main(String[] args) {
+
+
         String original = "madam";
 
         // Create Stack
@@ -26,7 +27,27 @@ public class UseCase5PalindromeCheckerApp {
             }
         }
 
-        // Print result
+
+        String original = "radar";
+        char[] characters = original.toCharArray();
+
+        String original = "level";
+
+
+        int start = 0;
+        int end = characters.length - 1;
+
+        boolean isPalindrome = true;
+
+        while (start < end) {
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
+        }
+
         if (isPalindrome) {
             System.out.println("The string \"" + original + "\" is a Palindrome.");
         } else {
