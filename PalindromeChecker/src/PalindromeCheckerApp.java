@@ -1,20 +1,23 @@
 public class PalindromeCheckerApp {
 
-    // Application constants
-    static final String APP_NAME = "Palindrome Checker Application";
-    static final String VERSION = "Version 1.0";
-
     public static void main(String[] args) {
 
-        // Welcome Message
-        System.out.println("======================================");
-        System.out.println("Welcome to " + APP_NAME);
-        System.out.println(VERSION);
-        System.out.println("======================================");
+        // Original String
+        String original = "level";
 
-        System.out.println("Application started successfully.");
-        System.out.println("Ready for palindrome processing...");
+        // Variable to store reversed string
+        String reversed = "";
 
-        // End of UC1
+        // Reverse using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
+        }
+
+        // Compare original and reversed using equals()
+        if (original.equals(reversed)) {
+            System.out.println("The string \"" + original + "\" is a Palindrome.");
+        } else {
+            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
+        }
     }
 }
