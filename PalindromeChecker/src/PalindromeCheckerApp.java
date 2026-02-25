@@ -5,6 +5,9 @@ public class PalindromeCheckerApp {
         String original = "radar";
         char[] characters = original.toCharArray();
 
+        String original = "level";
+
+
         int start = 0;
         int end = characters.length - 1;
 
