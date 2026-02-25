@@ -2,13 +2,9 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Original string
         String original = "radar";
-
-        // Convert String to character array
         char[] characters = original.toCharArray();
 
-        // Two-pointer approach
         int start = 0;
         int end = characters.length - 1;
 
@@ -23,7 +19,6 @@ public class PalindromeCheckerApp {
             end--;
         }
 
-        // Display result
         if (isPalindrome) {
             System.out.println("The string \"" + original + "\" is a Palindrome.");
         } else {
