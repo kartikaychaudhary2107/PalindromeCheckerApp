@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class UseCase5PalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
 
         // Origin    public static void main(String[] args) {
