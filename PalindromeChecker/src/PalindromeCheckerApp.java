@@ -1,82 +1,36 @@
-import java.util.Stack;
-
-import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
-
 
 public class PalindromeCheckerApp {
 
-
-        // Origin    public static void main(String[] args) {
-
-
-        String original = "madam";
-
-        // Create Stack
-        Stack<Character> stack = new Stack<>();
-
-        // Push characters into stack
-        for (int i = 0; i < original.length(); i++) {
-            stack.push(original.charAt(i));
+    public static void main(String[] args) {
 
         // Original string
         String original = "racecar";
 
-        // Create Stack and Queue
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        // Create Deque
+        Deque<Character> deque = new LinkedList<>();
 
-        // Insert characters into both data structures
+        // Insert characters into deque
         for (int i = 0; i < original.length(); i++) {
-            char ch = original.charAt(i);
-            stack.push(ch);      // LIFO
-            queue.add(ch);       // FIFO
-
+            deque.addLast(original.charAt(i));
         }
 
         boolean isPalindrome = true;
 
+        // Compare front and rear until deque size is <= 1
+        while (deque.size() > 1) {
 
-        // Pop from stack and compare
-        for (int i = 0; i < original.length(); i++) {
-            char poppedChar = stack.pop();
-            if (original.charAt(i) != poppedChar) {
+            char front = deque.removeFirst();  // from front
+            char rear = deque.removeLast();    // from rear
 
-        // Compare pop (stack) and dequeue (queue)
-        for (int i = 0; i < original.length(); i++) {
-            char fromStack = stack.pop();
-            char fromQueue = queue.remove();
-
-            if (fromStack != fromQueue) {
-
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
         }
 
-
-
-        String original = "radar";
-        char[] characters = original.toCharArray();
-
-        String original = "level";
-
-
-        int start = 0;
-        int end = characters.length - 1;
-
-        boolean isPalindrome = true;
-
-        while (start < end) {
-            if (characters[start] != characters[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
-
+        // Print result
         if (isPalindrome) {
             System.out.println("The string \"" + original + "\" is a Palindrome.");
         } else {
