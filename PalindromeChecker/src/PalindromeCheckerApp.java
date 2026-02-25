@@ -1,6 +1,32 @@
-public class PalindromeCheckerApp {
+import java.util.Stack;
 
-    public static void main(String[] args) {
+public class UseCase5PalindromeCheckerApp {
+
+
+        // Origin    public static void main(String[] args) {
+
+
+        String original = "madam";
+
+        // Create Stack
+        Stack<Character> stack = new Stack<>();
+
+        // Push characters into stack
+        for (int i = 0; i < original.length(); i++) {
+            stack.push(original.charAt(i));
+        }
+
+        boolean isPalindrome = true;
+
+        // Pop from stack and compare
+        for (int i = 0; i < original.length(); i++) {
+            char poppedChar = stack.pop();
+            if (original.charAt(i) != poppedChar) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
 
         String original = "radar";
         char[] characters = original.toCharArray();
