@@ -1,40 +1,90 @@
-import java.util.Deque;
-import java.util.LinkedList;
+class Node {
+    char data;
+    Node next;
+
+    Node(char data) {
+        this.data = data;
+        this.next = null;
+    }
+}
 
 public class PalindromeCheckerApp {
 
-    public static void main(String[] args) {
+    // Convert string to linked list
+    public static Node createLinkedList(String str) {
+        Node head = null;
+        Node tail = null;
 
-        // Original string
-        String original = "racecar";
+        for (int i = 0; i < str.length(); i++) {
+            Node newNode = new Node(str.charAt(i));
 
-        // Create Deque
-        Deque<Character> deque = new LinkedList<>();
-
-        // Insert characters into deque
-        for (int i = 0; i < original.length(); i++) {
-            deque.addLast(original.charAt(i));
-        }
-
-        boolean isPalindrome = true;
-
-        // Compare front and rear until deque size is <= 1
-        while (deque.size() > 1) {
-
-            char front = deque.removeFirst();  // from front
-            char rear = deque.removeLast();    // from rear
-
-            if (front != rear) {
-                isPalindrome = false;
-                break;
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
             }
         }
+        return head;
+    }
 
-        // Print result
-        if (isPalindrome) {
-            System.out.println("The string \"" + original + "\" is a Palindrome.");
-        } else {
-            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
+    // Reverse linked list
+    public static Node reverse(Node head) {
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
+        return prev;
+    }
+
+    // Check palindrome using linked list
+    public static boolean isPalindrome(Node head) {
+
+        if (head == null || head.next == null)
+            return true;
+
+        Node slow = head;
+        Node fast = head;
+
+        // Find middle using fast & slow pointers
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Reverse second half
+        Node secondHalf = reverse(slow);
+
+        Node firstHalf = head;
+
+        // Compare halves
+        while (secondHalf != null) {
+            if (firstHalf.data != secondHalf.data)
+                return false;
+
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+
+        String input = "madam";   // example input
+
+        Node head = createLinkedList(input);
+
+        if (isPalindrome(head))
+            System.out.println(input + " is a Palindrome");
+        else
+            System.out.println(input + " is NOT a Palindrome");
     }
 }
