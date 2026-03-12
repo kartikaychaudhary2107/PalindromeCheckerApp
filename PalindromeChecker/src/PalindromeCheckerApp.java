@@ -1,7 +1,42 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutte
+import java.util.Scanner;
+
 public class PalindromeCheckerApp {
-    public static void main(String[] args) {
-        System.out.println("Hello World");
+
+    public static boolean isPalindrome(String str) {
+
+        int start = 0;
+        int end = str.length() - 1;
+
+        while (start < end) {
+            if (str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
     }
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        // Normalize the string: remove spaces and convert to lowercase
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+        boolean result = isPalindrome(normalized);
+
+        if (result) {
+            System.out.println("The given string is a palindrome (ignoring spaces and case).");
+        } else {
+            System.out.println("The given string is not a palindrome.");
+        }
+
+        scanner.close();
+    }
+
 }
