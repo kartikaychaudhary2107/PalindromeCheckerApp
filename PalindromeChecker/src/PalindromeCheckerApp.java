@@ -1,3 +1,20 @@
+ feature/UC10
+import java.util.Scanner;
+
+public class PalindromeCheckerApp {
+
+    public static boolean isPalindrome(String str) {
+
+        int start = 0;
+        int end = str.length() - 1;
+
+        while (start < end) {
+            if (str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+
 class Node {
     char data;
     Node next;
@@ -71,12 +88,34 @@ public class PalindromeCheckerApp {
 
             firstHalf = firstHalf.next;
             secondHalf = secondHalf.next;
+ develop
         }
 
         return true;
     }
 
     public static void main(String[] args) {
+
+ feature/UC10
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        // Normalize the string: remove spaces and convert to lowercase
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+        boolean result = isPalindrome(normalized);
+
+        if (result) {
+            System.out.println("The given string is a palindrome (ignoring spaces and case).");
+        } else {
+            System.out.println("The given string is not a palindrome.");
+        }
+
+        scanner.close();
+    }
+
 
         String input = "madam";   // example input
 
@@ -87,4 +126,5 @@ public class PalindromeCheckerApp {
         else
             System.out.println(input + " is NOT a Palindrome");
     }
+ develop
 }
