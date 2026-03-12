@@ -1,40 +1,42 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Scanner;
 
-public class PalindromeCheckerApp {
+public class UseCase9PalindromeCheckerApp {
 
-    public static void main(String[] args) {
+```
+// Recursive method to check palindrome
+public static boolean isPalindrome(String str, int start, int end) {
 
-        // Original string
-        String original = "racecar";
-
-        // Create Deque
-        Deque<Character> deque = new LinkedList<>();
-
-        // Insert characters into deque
-        for (int i = 0; i < original.length(); i++) {
-            deque.addLast(original.charAt(i));
-        }
-
-        boolean isPalindrome = true;
-
-        // Compare front and rear until deque size is <= 1
-        while (deque.size() > 1) {
-
-            char front = deque.removeFirst();  // from front
-            char rear = deque.removeLast();    // from rear
-
-            if (front != rear) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // Print result
-        if (isPalindrome) {
-            System.out.println("The string \"" + original + "\" is a Palindrome.");
-        } else {
-            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
-        }
+    // Base condition
+    if (start >= end) {
+        return true;
     }
+
+    // If characters are not equal, not a palindrome
+    if (str.charAt(start) != str.charAt(end)) {
+        return false;
+    }
+
+    // Recursive call
+    return isPalindrome(str, start + 1, end - 1);
+}
+
+public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Enter a string: ");
+    String input = scanner.nextLine();
+
+    boolean result = isPalindrome(input, 0, input.length() - 1);
+
+    if (result) {
+        System.out.println("The given string is a palindrome.");
+    } else {
+        System.out.println("The given string is not a palindrome.");
+    }
+
+    scanner.close();
+}
+```
+
 }
