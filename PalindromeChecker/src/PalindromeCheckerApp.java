@@ -1,3 +1,5 @@
+ feature/UC9
+import java.util.Scanner;
 class Node {
     char data;
     Node next;
@@ -7,9 +9,48 @@ class Node {
         this.next = null;
     }
 }
+develop
 
-public class PalindromeCheckerApp {
+public class UseCase9PalindromeCheckerApp {
 
+= feature/UC9
+```
+// Recursive method to check palindrome
+public static boolean isPalindrome(String str, int start, int end) {
+
+    // Base condition
+    if (start >= end) {
+        return true;
+    }
+
+    // If characters are not equal, not a palindrome
+    if (str.charAt(start) != str.charAt(end)) {
+        return false;
+    }
+
+    // Recursive call
+    return isPalindrome(str, start + 1, end - 1);
+}
+
+public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Enter a string: ");
+    String input = scanner.nextLine();
+
+    boolean result = isPalindrome(input, 0, input.length() - 1);
+
+    if (result) {
+        System.out.println("The given string is a palindrome.");
+    } else {
+        System.out.println("The given string is not a palindrome.");
+    }
+
+    scanner.close();
+}
+```
+=
     // Convert string to linked list
     public static Node createLinkedList(String str) {
         Node head = null;
@@ -87,4 +128,5 @@ public class PalindromeCheckerApp {
         else
             System.out.println(input + " is NOT a Palindrome");
     }
+ develop
 }
