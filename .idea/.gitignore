@@ -8,3 +8,9 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+<<<<<<< HEAD
+=======
+out/
+*.class
+git add .gitignore
+>>>>>>> 6379d0103d9ecf715bf1f7e56f3b12acbe832fbf
